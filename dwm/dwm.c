@@ -1630,16 +1630,7 @@ setup_theme(const Theme* theme)
 void
 setup_theme_arg(const Arg* arg)
 {
-  switch (arg->i) {
-  case THEME_MINT_ID:
-    setup_theme(THEME_MINT_PTR);
-    break;
-  case THEME_ARIZONA_ID:
-    setup_theme(THEME_ARIZONA_PTR);
-    break;
-  default:
-    printf("Unknown theme id %d!\n", arg->i);
-  }
+  setup_theme(arg->v);
 }
 
 void

@@ -15,9 +15,6 @@ typedef struct s_Theme {
   char* selfgcolor;
 } Theme;
 
-#define THEME_MINT_ID (0)
-#define THEME_MINT_PTR (&Mint)
-
 static const Theme Mint =
   {
    .normbordercolor = "#949093",
@@ -27,9 +24,6 @@ static const Theme Mint =
    .selbgcolor      = "#619668",
    .selfgcolor      = "#d4ced2",			   
   };
-
-#define THEME_ARIZONA_ID (1)
-#define THEME_ARIZONA_PTR (&Arizona)
 
 static const Theme Arizona =
   {
