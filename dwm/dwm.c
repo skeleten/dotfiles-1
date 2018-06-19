@@ -1625,6 +1625,8 @@ setup_theme(const Theme* theme)
   drw_clr_free(old_sel_border);
   drw_clr_free(old_sel_bg);
   drw_clr_free(old_sel_fg);
+
+  drawbars();
 }
 
 void
