@@ -1604,12 +1604,27 @@ void
 setup_theme(const Theme* theme)
 {
   printf("Setting up a theme\n");
+  
+  Clr * old_border = scheme[SchemeNorm].border;
+  Clr * old_bg = scheme[SchemeNorm].bg;
+  Clr * old_fg = scheme[SchemeNorm].fg;
+  Clr * old_border = scheme[SchemeSel].border;
+  Clr * old_bg = scheme[SchemeSel].bg;
+  Clr * old_fg = scheme[SchemeSel].fg;
+  
   scheme[SchemeNorm].border	= drw_clr_create(drw, theme->normbordercolor);
   scheme[SchemeNorm].bg		= drw_clr_create(drw, theme->normbgcolor);
   scheme[SchemeNorm].fg		= drw_clr_create(drw, theme->normfgcolor);
   scheme[SchemeSel].border	= drw_clr_create(drw, theme->selbordercolor);
   scheme[SchemeSel].bg		= drw_clr_create(drw, theme->selbgcolor);
   scheme[SchemeSel].fg		= drw_clr_create(drw, theme->selfgcolor);
+
+  drw_clr_free(old_border);
+  drw_clr_free(old_bg);
+  drw_clr_free(old_fg);
+  drw_clr_free(old_border);
+  drw_clr_free(old_bg);
+  drw_clr_free(old_fg);
 }
 
 void
