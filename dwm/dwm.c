@@ -1605,12 +1605,12 @@ setup_theme(const Theme* theme)
 {
   printf("Setting up a theme\n");
   
-  Clr * old_border = scheme[SchemeNorm].border;
-  Clr * old_bg = scheme[SchemeNorm].bg;
-  Clr * old_fg = scheme[SchemeNorm].fg;
-  Clr * old_border = scheme[SchemeSel].border;
-  Clr * old_bg = scheme[SchemeSel].bg;
-  Clr * old_fg = scheme[SchemeSel].fg;
+  Clr * old_norm_border = scheme[SchemeNorm].border;
+  Clr * old_norm_bg = scheme[SchemeNorm].bg;
+  Clr * old_norm_fg = scheme[SchemeNorm].fg;
+  Clr * old_sel_border = scheme[SchemeSel].border;
+  Clr * old_sel_bg = scheme[SchemeSel].bg;
+  Clr * old_sel_fg = scheme[SchemeSel].fg;
   
   scheme[SchemeNorm].border	= drw_clr_create(drw, theme->normbordercolor);
   scheme[SchemeNorm].bg		= drw_clr_create(drw, theme->normbgcolor);
@@ -1619,12 +1619,12 @@ setup_theme(const Theme* theme)
   scheme[SchemeSel].bg		= drw_clr_create(drw, theme->selbgcolor);
   scheme[SchemeSel].fg		= drw_clr_create(drw, theme->selfgcolor);
 
-  drw_clr_free(old_border);
-  drw_clr_free(old_bg);
-  drw_clr_free(old_fg);
-  drw_clr_free(old_border);
-  drw_clr_free(old_bg);
-  drw_clr_free(old_fg);
+  drw_clr_free(old_norm_border);
+  drw_clr_free(old_norm_bg);
+  drw_clr_free(old_norm_fg);
+  drw_clr_free(old_sel_border);
+  drw_clr_free(old_sel_bg);
+  drw_clr_free(old_sel_fg);
 }
 
 void
