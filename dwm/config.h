@@ -118,8 +118,8 @@ static const char *scrot[] 		 = { "nougat", "-f", NULL };
 static Key keys[] = {
 
 /* modifier            key										function          argument */
-
-	{ Super,      			 27,	 /* r */					spawn,		    		{.v = ranger } },
+	{ Alt,      			 27,	 /* r */					setup_theme_arg,		    		{.i = THEME_ARIZONA_ID } },
+	{ Alt,      			 40,	 /* d */					setup_theme_arg,		    		{.i = THEME_MINT_ID } },
 	{ Super,		      	 40,	 /* d */					spawn, 			    	{.v = dmenucmd } },
 	{ Alt,         	  	 36,	 /* Return */			spawn,     		    {.v = terminal } },
 	{ Alt,               56,	 /* b */					togglebar,      	{0} },

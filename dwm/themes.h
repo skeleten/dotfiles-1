@@ -3,25 +3,42 @@
 
 // themes.h
 
+#ifndef __THEMES_H
+#define __THEMES_H __THEMES_H
 
-#define Mint
+typedef struct s_Theme {
+  char* normbordercolor;
+  char* normbgcolor;
+  char* normfgcolor;
+  char* selbordercolor;
+  char* selbgcolor;
+  char* selfgcolor;
+} Theme;
 
-#ifdef Mint
-static const char normbordercolor[] = "#949093";
-static const char normbgcolor[]     = "#151b1e";
-static const char normfgcolor[]     = "#d4ced2";
-static const char selbordercolor[]  = "#d4ced2";
-static const char selbgcolor[]      = "#619668";
-static const char selfgcolor[]      = "#d4ced2";
-#endif
+#define THEME_MINT_ID (0)
+#define THEME_MINT_PTR (&Mint)
 
+static const Theme Mint =
+  {
+   .normbordercolor = "#949093",
+   .normbgcolor     = "#151b1e",
+   .normfgcolor     = "#d4ced2",
+   .selbordercolor  = "#d4ced2",
+   .selbgcolor      = "#619668",
+   .selfgcolor      = "#d4ced2",			   
+  };
 
+#define THEME_ARIZONA_ID (1)
+#define THEME_ARIZONA_PTR (&Arizona)
 
-#ifdef Arizona
-static const char normbordercolor[] = "#949093";
-static const char normbgcolor[]     = "#151b1e";
-static const char normfgcolor[]     = "#d4ced2";
-static const char selbordercolor[]  = "#d4ced2";
-static const char selbgcolor[]      = "#689990";
-static const char selfgcolor[]      = "#d4ced2";
+static const Theme Arizona =
+  {
+   .normbordercolor = "#949093",
+   .normbgcolor     = "#151b1e",
+   .normfgcolor     = "#d4ced2",
+   .selbordercolor  = "#d4ced2",
+   .selbgcolor      = "#689990",
+   .selfgcolor      = "#d4ced2",
+  };
+
 #endif

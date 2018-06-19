@@ -204,6 +204,8 @@ static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
 static void setup(void);
+static void setup_theme(const Theme* theme);
+static void setup_theme_arg(const Arg *arg);
 static void showhide(Client *c);
 static void sigchld(int unused);
 static void spawn(const Arg *arg);
@@ -1574,12 +1576,13 @@ setup(void)
 	cursor[CurResize] = drw_cur_create(drw, XC_sizing);
 	cursor[CurMove] = drw_cur_create(drw, XC_fleur);
 	/* init appearance */
-	scheme[SchemeNorm].border = drw_clr_create(drw, normbordercolor);
-	scheme[SchemeNorm].bg = drw_clr_create(drw, normbgcolor);
-	scheme[SchemeNorm].fg = drw_clr_create(drw, normfgcolor);
-	scheme[SchemeSel].border = drw_clr_create(drw, selbordercolor);
-	scheme[SchemeSel].bg = drw_clr_create(drw, selbgcolor);
-	scheme[SchemeSel].fg = drw_clr_create(drw, selfgcolor);
+	setup_theme(&Mint);
+	// scheme[SchemeNorm].border = drw_clr_create(drw, normbordercolor);
+	// scheme[SchemeNorm].bg = drw_clr_create(drw, normbgcolor);
+	// scheme[SchemeNorm].fg = drw_clr_create(drw, normfgcolor);
+	// scheme[SchemeSel].border = drw_clr_create(drw, selbordercolor);
+	// scheme[SchemeSel].bg = drw_clr_create(drw, selbgcolor);
+	// scheme[SchemeSel].fg = drw_clr_create(drw, selfgcolor);
 	/* init bars */
 	updatebars();
 	updatestatus();
@@ -1595,6 +1598,33 @@ setup(void)
 	XSelectInput(dpy, root, wa.event_mask);
 	grabkeys();
 	focus(NULL);
+}
+
+void
+setup_theme(const Theme* theme)
+{
+  printf("Setting up a theme\n");
+  scheme[SchemeNorm].border	= drw_clr_create(drw, theme->normbordercolor);
+  scheme[SchemeNorm].bg		= drw_clr_create(drw, theme->normbgcolor);
+  scheme[SchemeNorm].fg		= drw_clr_create(drw, theme->normfgcolor);
+  scheme[SchemeSel].border	= drw_clr_create(drw, theme->selbordercolor);
+  scheme[SchemeSel].bg		= drw_clr_create(drw, theme->selbgcolor);
+  scheme[SchemeSel].fg		= drw_clr_create(drw, theme->selfgcolor);
+}
+
+void
+setup_theme_arg(const Arg* arg)
+{
+  switch (arg->i) {
+  case THEME_MINT_ID:
+    setup_theme(THEME_MINT_PTR);
+    break;
+  case THEME_ARIZONA_ID:
+    setup_theme(THEME_ARIZONA_PTR);
+    break;
+  default:
+    printf("Unknown theme id %d!\n", arg->i);
+  }
 }
 
 void
